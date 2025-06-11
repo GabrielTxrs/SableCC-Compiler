@@ -1,0 +1,23 @@
+Package calculadora;
+
+Helpers
+ digito = ['0' .. '9'];
+ espaco = ' ';
+ rc = 13;
+ nl = 10;
+ 
+Tokens
+ numero = digito+;
+ soma = '+';
+ menos = '-';
+ mult = '*';
+ div = '/';
+ mod = '%';
+ par_esq = '(';
+ par_dir = ')';
+ vazio = (espaco | rc | nl)+;
+
+
+Ignored Tokens
+ vazio;
+
