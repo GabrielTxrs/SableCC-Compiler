@@ -1,6 +1,8 @@
 Package calculadora;
 
 Helpers
+ maiuscula = ['A' .. 'Z'];
+ minuscula = ['a' .. 'z'];
  digito = ['0' .. '9'];
  espaco = ' ';
  rc = 13;
@@ -8,6 +10,7 @@ Helpers
  
 Tokens
  numero = digito+;
+ identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
  soma = '+';
  menos = '-';
  mult = '*';

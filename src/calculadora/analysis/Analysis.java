@@ -12,6 +12,7 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseTNumero(TNumero node);
+    void caseTIdentificador(TIdentificador node);
     void caseTSoma(TSoma node);
     void caseTMenos(TMenos node);
     void caseTMult(TMult node);

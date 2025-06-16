@@ -75,6 +75,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTIdentificador(TIdentificador node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTSoma(TSoma node)
     {
         defaultCase(node);
