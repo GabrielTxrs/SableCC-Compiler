@@ -11,31 +11,31 @@ It presents:
     vector of number (2x2) MatrizNumerica;
 
 Let us begin:
-    // Comentário de linha única
+    { Comentário de linha única }
     {
     Este é um
     comentário de
     bloco.
     }
 
-    show ('Programa inicializado!', '\n'); // Exibe uma string literal e uma quebra de linha 
+    show ('Programa inicializado!', '\n'); { Exibe uma string literal e uma quebra de linha }
 
-    capture (VariavelNumerica); // Captura um número do teclado 
-    show ('Você digitou: ', VariavelNumerica, '\n'); // Exibe o número digitado 
+    capture (VariavelNumerica); { Captura um número do teclado } 
+    show ('Você digitou: ', VariavelNumerica, '\n'); { Exibe o número digitado } 
 
-    capture (VariavelSimbolica); // Captura um símbolo 
+    capture (VariavelSimbolica); { Captura um símbolo }
     show ('O símbolo digitado foi: ', VariavelSimbolica, '\n');
 
-    capture (VariavelResposta); // Captura uma resposta (yes/no) 
+    capture (VariavelResposta); { Captura uma resposta (yes/no) } 
     show ('Sua resposta foi: ', VariavelResposta, '\n');
 
-    // Inicialização de vetores e acesso a elementos
+    { Inicialização de vetores e acesso a elementos }
     MeuVetorNumerico(1) = 100;
     MeuVetorNumerico(2) = CONSTANTE_NUMERICA;
     show ('Elemento 1 do vetor numerico: ', MeuVetorNumerico(1), '\n');
 
-    MeuVetorSimbolico = "ABC"; // Vetores unidimensionais de symbol podem ser inicializados com string 
-    show ('Elemento 2 do vetor simbolico: ', MeuVetorSimbolico(2), '\n'); // Índices de 1 ao tamanho 
+    MeuVetorSimbolico = "ABC"; { Vetores unidimensionais de symbol podem ser inicializados com string }
+    show ('Elemento 2 do vetor simbolico: ', MeuVetorSimbolico(2), '\n'); { Índices de 1 ao tamanho }
 
     MatrizNumerica(1,1) = 5;
     MatrizNumerica(1,2) = 8;

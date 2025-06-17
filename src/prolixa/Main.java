@@ -4,27 +4,27 @@ import prolixa.lexer.*;
 import prolixa.node.*;
 import java.io.*;
 
-public class Main
-{
-	public static void main(String[] args)
-	{
-		try
-		{
-			String arquivo = "teste/teste.calc";
+public class Main {
+	public static void main(String[] args) {
+        File testDir = new File("teste");
+        File[] files = testDir.listFiles();
+        if (files == null) {
+            System.out.println("Directory 'teste/' not found or is empty.");
+            return;
+        }
 
-			Lexer lexer =
-					new Lexer(
-							new PushbackReader(
-									new FileReader(arquivo), 1024)); 
-			Token token;
-			while(!((token = lexer.next()) instanceof EOF)) {
-				System.out.println(token.getClass());
-				System.out.println(" ( "+token.toString()+")");
-			}
-		}
-		catch(Exception e)
-		{
-			System.out.println(e.getMessage());
-		}
-	}
+        for (File file : files) {
+            if (!file.isFile()) continue;
+            System.out.println("\nFile: " + file.getName());
+            try {
+                Lexer lexer = new Lexer(new PushbackReader(new FileReader(file), 1024));
+                Token token;
+                while (!((token = lexer.next()) instanceof EOF)) {
+                    System.out.print(token.getClass()+" | "+token.toString()+"|\n");
+                }
+            } catch (Exception e) {
+                System.out.println("Error in file " + file.getName() + ": " + e.getMessage());
+            }
+        }
+    }
 }
