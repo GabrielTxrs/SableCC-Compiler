@@ -1,6 +1,7 @@
-package calculadora;
-import calculadora.lexer.*;
-import calculadora.node.*;
+package prolixa;
+
+import prolixa.lexer.*;
+import prolixa.node.*;
 import java.io.*;
 
 public class Main
