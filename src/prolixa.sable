@@ -1,0 +1,109 @@
+Package prolixa;
+
+Helpers 
+  all = [0 .. 0xFFFF];
+  maiuscula = ['A' .. 'Z'];
+  minuscula = ['a' .. 'z'];
+  letra = maiuscula | minuscula;
+  digito = ['0' .. '9'];
+  espaco = ' ';
+
+  tab = 9;
+  cr = 13;
+  lf = 10;
+  eol = cr lf | cr | lf;
+  not_cr_lf = [all - [cr + lf]];
+  not_l_bracket = [all - '{'];
+  not_r_bracket = [all - '}'];
+
+  /* estruturas de controle */
+  kw_just         = 'just';
+  kw_in           = 'in';
+  kw_case         = 'case';
+  kw_that_lower   = 'that';
+  kw_otherwise    = 'otherwise';
+  kw_as           = 'as';
+  kw_long         = 'long';
+  kw_go           = 'go';
+  kw_next         = 'next';
+  kw_iteration    = 'iteration';
+  kw_abandon      = 'abandon';  
+  kw_considering  = 'considering';
+  kw_do           = 'do';
+  kw_from         = 'from';
+  kw_to           = 'to';
+  kw_by           = 'by';
+ 
+  /* tipos primitivos */
+  tipo_symbol          = 'symbol';
+  tipo_number          = 'number';
+  tipo_answer          = 'answer';
+ 
+  /* valores booleanos */
+  kw_yes             = 'yes';
+  kw_no              = 'no';
+
+  /* operadores logicos */
+  kw_and             = 'and';
+  kw_or              = 'or';
+  kw_xor             = 'xor';
+ 
+Tokens
+  /* frases de cabeçalho */
+  this = 'This';
+  is = 'is';
+  program = 'program';
+ 
+  it = 'It';
+  presents = 'presents';
+  
+  let = 'Let';
+  us = 'us';
+  begin = 'begin';
+ 
+  that = 'That';
+  would = 'would';
+  be = 'be';
+  all = 'all';
+
+  /* Operadores e símbolos */
+  plus               = '+';
+  minus              = '-';
+  mult               = '*';
+  div                = '/';
+  mod                = '//';
+  assign             = ':=';
+  equal              = '=';
+  eq                 = '==';
+  neq                = '!=';
+  le                 = '<=';
+  ge                 = '>=';
+  lt                 = '<';
+  gt                 = '>';
+  lpar               = '(';
+  rpar               = ')';
+  lbracket           = '[';
+  rbracket           = ']';
+  comma              = ',';
+  colon              = ':';
+  semicolon          = ';';
+  dot                = '.';
+  times              = 'x';
+  
+  numero = digito+ ('.' | digito+)?;
+  identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
+  tipo_primitivo = tipo_symbol | tipo_number | tipo_answer;
+  
+  /* modificadores e declaracao de vetor */
+  kw_alterable   = 'alterable';
+  kw_unalterable = 'unalterable';
+  kw_vector      = 'vector';
+  kw_of          = 'of';
+
+  
+  vazio = (espaco | cr | lf | tab)+;
+  comentario_bloco = '{'not_r_bracket*'}';
+
+Ignored Tokens
+  vazio,
+  comentario_bloco;

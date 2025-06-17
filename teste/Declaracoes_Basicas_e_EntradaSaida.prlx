@@ -1,0 +1,46 @@
+This is program ProgramaPrincipal
+It presents:
+    unalterable number CONSTANTE_NUMERICA = 10;
+    unalterable symbol CONSTANTE_SIMBOLO = 'X';
+    unalterable answer CONSTANTE_RESPOSTA = yes;
+    alterable number VariavelNumerica;
+    alterable symbol VariavelSimbolica;
+    alterable answer VariavelResposta;
+    vector of number (5) MeuVetorNumerico;
+    vector of symbol (3) MeuVetorSimbolico;
+    vector of number (2x2) MatrizNumerica;
+
+Let us begin:
+    // Comentário de linha única
+    {
+    Este é um
+    comentário de
+    bloco.
+    }
+
+    show ('Programa inicializado!', '\n'); // Exibe uma string literal e uma quebra de linha 
+
+    capture (VariavelNumerica); // Captura um número do teclado 
+    show ('Você digitou: ', VariavelNumerica, '\n'); // Exibe o número digitado 
+
+    capture (VariavelSimbolica); // Captura um símbolo 
+    show ('O símbolo digitado foi: ', VariavelSimbolica, '\n');
+
+    capture (VariavelResposta); // Captura uma resposta (yes/no) 
+    show ('Sua resposta foi: ', VariavelResposta, '\n');
+
+    // Inicialização de vetores e acesso a elementos
+    MeuVetorNumerico(1) = 100;
+    MeuVetorNumerico(2) = CONSTANTE_NUMERICA;
+    show ('Elemento 1 do vetor numerico: ', MeuVetorNumerico(1), '\n');
+
+    MeuVetorSimbolico = "ABC"; // Vetores unidimensionais de symbol podem ser inicializados com string 
+    show ('Elemento 2 do vetor simbolico: ', MeuVetorSimbolico(2), '\n'); // Índices de 1 ao tamanho 
+
+    MatrizNumerica(1,1) = 5;
+    MatrizNumerica(1,2) = 8;
+    MatrizNumerica(2,1) = 3;
+    MatrizNumerica(2,2) = 12;
+    show ('Elemento (2,2) da matriz: ', MatrizNumerica(2,2), '\n');
+
+That would be all.

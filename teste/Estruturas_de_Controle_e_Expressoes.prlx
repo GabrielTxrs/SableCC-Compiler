@@ -1,0 +1,70 @@
+This is program ControleDeFluxo
+It presents:
+    alterable number Contador;
+    alterable number Limite = 5;
+    alterable answer CondicaoVerdadeira = yes;
+    alterable number Resultante;
+    alterable number X = 10;
+    alterable number Y = 3;
+
+Let us begin:
+    Contador = 0;
+
+    // just in case that
+    just in case that (Limite > 0) do
+        show ('Limite é positivo.', '\n');
+        {
+            show ('Um sub-bloco dentro de just in case.', '\n');
+            alterable number Temporario = 20; // Variável local 
+            show ('Temporario: ', Temporario, '\n');
+        }
+    otherwise do
+        show ('Limite não é positivo.', '\n');
+    ;
+
+    // as long as
+    as long as (Contador < Limite) do
+        show ('Contador: ', Contador, '\n');
+        Contador = Contador + 1;
+        just in case that (Contador == 3) do
+            go to next iteration;
+        ;
+        show ('Depois do go to next iteration (se for 3, esta linha não aparece).', '\n');
+    ;
+
+    // considering
+    // A variável deve ser integer ou symbol , e a terceira expressão é o incremento 
+    considering Contador from 1 to 3 by 1 do
+        show ('Loop considering - Iteracao: ', Contador, '\n');
+        just in case that (Contador == 2) do
+            abandon;
+        ;
+        show ('Esta linha não aparece na terceira iteração devido ao abandon.', '\n');
+    ;
+    show ('Saiu do loop considering.', '\n');
+
+    // Expressões aritméticas, relacionais e booleanas 
+    Resultante = X + Y; // Soma 
+    show ('X + Y = ', Resultante, '\n');
+    Resultante = X - Y; // Subtração 
+    show ('X - Y = ', Resultante, '\n');
+    Resultante = X * Y; // Multiplicação 
+    show ('X * Y = ', Resultante, '\n');
+    Resultante = X / Y; // Divisão real 
+    show ('X / Y = ', Resultante, '\n');
+    Resultante = X // Y; // Divisão inteira 
+    show ('X // Y = ', Resultante, '\n');
+
+    just in case that (X == Y) do show ('X é igual a Y', '\n'); ; // Igualdade 
+    just in case that (X != Y) do show ('X é diferente de Y', '\n'); ; // Diferente 
+    just in case that (X <= Y) do show ('X é menor ou igual a Y', '\n'); ; // Menor ou igual 
+    just in case that (X >= Y) do show ('X é maior ou igual a Y', '\n'); ; // Maior ou igual 
+    just in case that (X < Y) do show ('X é menor que Y', '\n'); ; // Menor que 
+    just in case that (X > Y) do show ('X é maior que Y', '\n'); ; // Maior que 
+
+    just in case that (!CondicaoVerdadeira) do show ('CondicaoVerdadeira é no', '\n'); ; // Negação booleana 
+    just in case that (CondicaoVerdadeira and (X > Y)) do show ('AND lógico', '\n'); ; 
+    just in case that (CondicaoVerdadeira or (X < Y)) do show ('OR lógico', '\n'); ; 
+    just in case that (CondicaoVerdadeira xor (X > Y)) do show ('XOR lógico', '\n'); ; 
+
+That would be all.
