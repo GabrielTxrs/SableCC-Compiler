@@ -1,0 +1,1658 @@
+
+File: teste.calc
+TLpar | ( |
+TNumero | 42 |
+TPlus | + |
+TNumero | 3 |
+TRpar | ) |
+TMult | * |
+TNumero | 8 |
+TVazio | 
+ |
+TNumero | 45 |
+TVazio | 
+ |
+TIdentificador | A1231ada_ |
+TVazio | 
+
+ |
+Error in file teste.calc: [5,1] Unknown token: a1
+
+File: Estruturas_de_Controle_e_Expressoes.prlx
+TThis | This |
+TVazio |   |
+TIs | is |
+TVazio |   |
+TProgram | program |
+TVazio |   |
+TIdentificador | ControleDeFluxo |
+TVazio | 
+ |
+TIt | It |
+TVazio |   |
+TPresents | presents |
+TColon | : |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | Contador |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | Limite |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 5 |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoAnswer | answer |
+TVazio |   |
+TIdentificador | CondicaoVerdadeira |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TAnswer | yes |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | Resultante |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 10 |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | Y |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 3 |
+TSemicolon | ; |
+TVazio | 
+
+ |
+TLet | Let |
+TVazio |   |
+TUs | us |
+TVazio |   |
+TBegin | begin |
+TColon | : |
+TVazio | 
+     |
+TIdentificador | Contador |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 0 |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TComentarioBloco | { just in case that } |
+TVazio | 
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | Limite |
+TVazio |   |
+TGt | > |
+TVazio |   |
+TNumero | 0 |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Limite é positivo." |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+         |
+TComentarioBloco | {
+            show ("Um sub-bloco dentro de just in case.", '\n');
+            alterable number Temporario = 20;
+            show ("Temporario: ", Temporario, '\n');
+        } |
+TVazio | 
+     |
+TOtherwise | otherwise |
+TVazio |   |
+TDo | do |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Limite não é positivo." |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TComentarioBloco | { as long as } |
+TVazio | 
+     |
+TAs | as |
+TVazio |   |
+TLong | long |
+TVazio |   |
+TAs | as |
+TVazio |   |
+TLpar | ( |
+TIdentificador | Contador |
+TVazio |   |
+TLt | < |
+TVazio |   |
+TIdentificador | Limite |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Contador: " |
+TComma | , |
+TVazio |   |
+TIdentificador | Contador |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+         |
+TIdentificador | Contador |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | Contador |
+TVazio |   |
+TPlus | + |
+TVazio |   |
+TNumero | 1 |
+TSemicolon | ; |
+TVazio | 
+         |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | Contador |
+TVazio |   |
+TEq | == |
+TVazio |   |
+TNumero | 3 |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio | 
+             |
+TGo | go |
+TVazio |   |
+TTo | to |
+TVazio |   |
+TNext | next |
+TVazio |   |
+TIteration | iteration |
+TSemicolon | ; |
+TVazio | 
+         |
+TSemicolon | ; |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Depois do go to next iteration (se for 3, esta linha não aparece)." |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TComentarioBloco | { considering 
+     A variável deve ser integer ou symbol, e a terceira expressão é o incremento } |
+TVazio | 
+     |
+TConsidering | considering |
+TVazio |   |
+TIdentificador | Contador |
+TVazio |   |
+TFrom | from |
+TVazio |   |
+TNumero | 1 |
+TVazio |   |
+TTo | to |
+TVazio |   |
+TNumero | 3 |
+TVazio |   |
+TBy | by |
+TVazio |   |
+TNumero | 1 |
+TVazio |   |
+TDo | do |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Loop considering - Iteracao: " |
+TComma | , |
+TVazio |   |
+TIdentificador | Contador |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+         |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | Contador |
+TVazio |   |
+TEq | == |
+TVazio |   |
+TNumero | 2 |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio | 
+             |
+TAbandon | abandon |
+TSemicolon | ; |
+TVazio | 
+         |
+TSemicolon | ; |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Esta linha não aparece na terceira iteração devido ao abandon." |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TSemicolon | ; |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Saiu do loop considering." |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TComentarioBloco | { Expressões aritméticas, relacionais e booleanas } |
+TVazio | 
+     |
+TIdentificador | Resultante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TPlus | + |
+TVazio |   |
+TIdentificador | Y |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Soma } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X + Y = " |
+TComma | , |
+TVazio |   |
+TIdentificador | Resultante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | Resultante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TMinus | - |
+TVazio |   |
+TIdentificador | Y |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Subtração } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X - Y = " |
+TComma | , |
+TVazio |   |
+TIdentificador | Resultante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | Resultante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TMult | * |
+TVazio |   |
+TIdentificador | Y |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Multiplicação } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X * Y = " |
+TComma | , |
+TVazio |   |
+TIdentificador | Resultante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | Resultante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TDiv | / |
+TVazio |   |
+TIdentificador | Y |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Divisão real } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X / Y = " |
+TComma | , |
+TVazio |   |
+TIdentificador | Resultante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | Resultante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | X |
+TVazio |   |
+TMod | // |
+TVazio |   |
+TIdentificador | Y |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Divisão inteira } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X // Y = " |
+TComma | , |
+TVazio |   |
+TIdentificador | Resultante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TEq | == |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é igual a Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Igualdade } |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TNeq | != |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é diferente de Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Diferente } |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TLe | <= |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é menor ou igual a Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Menor ou igual } |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TGe | >= |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é maior ou igual a Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Maior ou igual } |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TLt | < |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é menor que Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Menor que } |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TGt | > |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "X é maior que Y" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Maior que } |
+TVazio |  
+
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TNot | ! |
+TIdentificador | CondicaoVerdadeira |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "CondicaoVerdadeira é no" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Negação booleana} |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | CondicaoVerdadeira |
+TVazio |   |
+TAnd | and |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TGt | > |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "AND lógico" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | CondicaoVerdadeira |
+TVazio |   |
+TOr | or |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TLt | < |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "OR lógico" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |  
+     |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio |   |
+TLpar | ( |
+TIdentificador | CondicaoVerdadeira |
+TVazio |   |
+TXor | xor |
+TVazio |   |
+TLpar | ( |
+TIdentificador | X |
+TVazio |   |
+TGt | > |
+TVazio |   |
+TIdentificador | Y |
+TRpar | ) |
+TRpar | ) |
+TVazio |   |
+TDo | do |
+TVazio |   |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "XOR lógico" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TSemicolon | ; |
+TVazio |  
+
+ |
+TThat | That |
+TVazio |   |
+TWould | would |
+TVazio |   |
+TBe | be |
+TVazio |   |
+TAll | all |
+TDot | . |
+
+File: codigo.prlx
+TThis | This |
+TVazio |   |
+TIs | is |
+TVazio |   |
+TProgram | program |
+TVazio |   |
+TIdentificador | Codigo_Prolixa |
+TDot | . |
+TVazio | 
+
+
+ |
+TIt | It |
+TVazio |   |
+TPresents | presents |
+TColon | : |
+TVazio | 
+ |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | Limite |
+TVazio | 
+ |
+TAlterable | alterable |
+TVazio |   |
+TTipoAnswer | answer |
+TVazio |   |
+TIdentificador | Num |
+TVazio | 
+ |
+TVector | vector |
+TVazio |   |
+TOf | of |
+TVazio |   |
+TTipoSymbol | symbol |
+TLpar | ( |
+TNumero | 2 |
+TTimes | x |
+TNumero | 3 |
+TRpar | ) |
+TVazio |   |
+TIdentificador | Matriz |
+TVazio | 
+
+ |
+TLet | Let |
+TVazio |   |
+TUs | us |
+TVazio |   |
+TBegin | begin |
+TColon | : |
+TVazio | 
+
+ |
+TJust | just |
+TVazio |   |
+TIn | in |
+TVazio |   |
+TCase | case |
+TVazio |   |
+TThatLower | that |
+TVazio | 
+ |
+TOtherwise | otherwise |
+TVazio | 
+ |
+TAs | as |
+TVazio |   |
+TLong | long |
+TVazio |   |
+TAs | as |
+TVazio |  
+ |
+TConsidering | considering |
+TVazio |   |
+TThatLower | that |
+TVazio | 
+ |
+TDo | do |
+TVazio | 
+ |
+TFrom | from |
+TVazio | 
+ |
+TTo | to |
+TVazio | 
+ |
+TBy | by |
+TVazio | 
+
+ |
+TAnswer | yes |
+TVazio |   |
+TAnswer | no |
+TVazio | 
+
+ |
+TThat | That |
+TVazio |   |
+TWould | would |
+TVazio |   |
+TBe | be |
+TVazio |   |
+TAll | all |
+TDot | . |
+TVazio | 
+
+ |
+Error in file codigo.prlx: [24,1] Unknown token: \
+
+File: Declaracoes_Basicas_e_EntradaSaida.prlx
+TThis | This |
+TVazio |   |
+TIs | is |
+TVazio |   |
+TProgram | program |
+TVazio |   |
+TIdentificador | ProgramaPrincipal |
+TVazio | 
+ |
+TIt | It |
+TVazio |   |
+TPresents | presents |
+TColon | : |
+TVazio | 
+     |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | CONSTANTE_NUMERICA |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 10 |
+TSemicolon | ; |
+TVazio | 
+     |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoSymbol | symbol |
+TVazio |   |
+TIdentificador | CONSTANTE_SIMBOLO |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TSymbol | ' |
+TSymbol | X' |
+TSemicolon | ; |
+TVazio | 
+     |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoAnswer | answer |
+TVazio |   |
+TIdentificador | CONSTANTE_RESPOSTA |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TAnswer | yes |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | VariavelNumerica |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoSymbol | symbol |
+TVazio |   |
+TIdentificador | VariavelSimbolica |
+TSemicolon | ; |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoAnswer | answer |
+TVazio |   |
+TIdentificador | VariavelResposta |
+TSemicolon | ; |
+TVazio | 
+     |
+TVector | vector |
+TVazio |   |
+TOf | of |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TLpar | ( |
+TNumero | 5 |
+TRpar | ) |
+TVazio |   |
+TIdentificador | MeuVetorNumerico |
+TSemicolon | ; |
+TVazio | 
+     |
+TVector | vector |
+TVazio |   |
+TOf | of |
+TVazio |   |
+TTipoSymbol | symbol |
+TVazio |   |
+TLpar | ( |
+TNumero | 3 |
+TRpar | ) |
+TVazio |   |
+TIdentificador | MeuVetorSimbolico |
+TSemicolon | ; |
+TVazio | 
+     |
+TVector | vector |
+TVazio |   |
+TOf | of |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TLpar | ( |
+TNumero | 2 |
+TTimes | x |
+TNumero | 2 |
+TRpar | ) |
+TVazio |   |
+TIdentificador | MatrizNumerica |
+TSemicolon | ; |
+TVazio | 
+
+ |
+TLet | Let |
+TVazio |   |
+TUs | us |
+TVazio |   |
+TBegin | begin |
+TColon | : |
+TVazio | 
+     |
+TComentarioBloco | { Comentário de linha única } |
+TVazio | 
+     |
+TComentarioBloco | {
+    Este é um
+    comentário de
+    bloco.
+    } |
+TVazio | 
+
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Programa inicializado!" |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Exibe uma string literal e uma quebra de linha } |
+TVazio | 
+
+     |
+TCapture | capture |
+TVazio |   |
+TLpar | ( |
+TIdentificador | VariavelNumerica |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Captura um número do teclado } |
+TVazio |  
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Você digitou: " |
+TComma | , |
+TVazio |   |
+TIdentificador | VariavelNumerica |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Exibe o número digitado } |
+TVazio |  
+
+     |
+TCapture | capture |
+TVazio |   |
+TLpar | ( |
+TIdentificador | VariavelSimbolica |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Captura um símbolo } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "O símbolo digitado foi: " |
+TComma | , |
+TVazio |   |
+TIdentificador | VariavelSimbolica |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TCapture | capture |
+TVazio |   |
+TLpar | ( |
+TIdentificador | VariavelResposta |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Captura uma resposta (yes/no) } |
+TVazio |  
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Sua resposta foi: " |
+TComma | , |
+TVazio |   |
+TIdentificador | VariavelResposta |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TComentarioBloco | { Inicialização de vetores e acesso a elementos } |
+TVazio | 
+     |
+TIdentificador | MeuVetorNumerico |
+TLpar | ( |
+TNumero | 1 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 100 |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | MeuVetorNumerico |
+TLpar | ( |
+TNumero | 2 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | CONSTANTE_NUMERICA |
+TSemicolon | ; |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Elemento 1 do vetor numerico: " |
+TComma | , |
+TVazio |   |
+TIdentificador | MeuVetorNumerico |
+TLpar | ( |
+TNumero | 1 |
+TRpar | ) |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TIdentificador | MeuVetorSimbolico |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TString | "ABC" |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Vetores unidimensionais de symbol podem ser inicializados com string } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Elemento 2 do vetor simbolico: " |
+TComma | , |
+TVazio |   |
+TIdentificador | MeuVetorSimbolico |
+TLpar | ( |
+TNumero | 2 |
+TRpar | ) |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Índices de 1 ao tamanho } |
+TVazio | 
+
+     |
+TIdentificador | MatrizNumerica |
+TLpar | ( |
+TNumero | 1 |
+TComma | , |
+TNumero | 1 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 5 |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | MatrizNumerica |
+TLpar | ( |
+TNumero | 1 |
+TComma | , |
+TNumero | 2 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 8 |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | MatrizNumerica |
+TLpar | ( |
+TNumero | 2 |
+TComma | , |
+TNumero | 1 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 3 |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | MatrizNumerica |
+TLpar | ( |
+TNumero | 2 |
+TComma | , |
+TNumero | 2 |
+TRpar | ) |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 12 |
+TSemicolon | ; |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "Elemento (2,2) da matriz: " |
+TComma | , |
+TVazio |   |
+TIdentificador | MatrizNumerica |
+TLpar | ( |
+TNumero | 2 |
+TComma | , |
+TNumero | 2 |
+TRpar | ) |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+ |
+TThat | That |
+TVazio |   |
+TWould | would |
+TVazio |   |
+TBe | be |
+TVazio |   |
+TAll | all |
+TDot | . |
+
+File: Escopo_e_Atribuicoes_Complexas.prlx
+TThis | This |
+TVazio |   |
+TIs | is |
+TVazio |   |
+TProgram | program |
+TVazio |   |
+TIdentificador | TesteEscopo |
+TVazio | 
+ |
+TIt | It |
+TVazio |   |
+TPresents | presents |
+TColon | : |
+TVazio | 
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | GlobalCounter |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Variável global } |
+TVazio |  
+     |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | GlobalValue |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 100 |
+TSemicolon | ; |
+TVazio | 
+
+ |
+TLet | Let |
+TVazio |   |
+TUs | us |
+TVazio |   |
+TBegin | begin |
+TColon | : |
+TVazio | 
+     |
+TIdentificador | GlobalCounter |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 0 |
+TSemicolon | ; |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "GlobalCounter inicial: " |
+TComma | , |
+TVazio |   |
+TIdentificador | GlobalCounter |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+     |
+TLbracket | [ |
+TVazio |   |
+TComentarioBloco | { Bloco de código, delimitado por [ e ] } |
+TVazio |  
+         |
+TAlterable | alterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | LocalVar |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 50 |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Variável local } |
+TVazio |  
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "LocalVar dentro do bloco: " |
+TComma | , |
+TVazio |   |
+TIdentificador | LocalVar |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+         |
+TIdentificador | GlobalCounter |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | GlobalCounter |
+TVazio |   |
+TPlus | + |
+TVazio |   |
+TIdentificador | LocalVar |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Acessando variável global dentro do bloco } |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "GlobalCounter após modificacao local: " |
+TComma | , |
+TVazio |   |
+TIdentificador | GlobalCounter |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+         |
+TIdentificador | LocalVar |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TIdentificador | LocalVar |
+TVazio |   |
+TMult | * |
+TVazio |   |
+TNumero | 2 |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Atribuição em variável local } |
+TVazio | 
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "LocalVar após reatribuicao: " |
+TComma | , |
+TVazio |   |
+TIdentificador | LocalVar |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+
+         |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | CONSTANTE_LOCAL |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 5 |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Constante local } |
+TVazio |  
+         |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "CONSTANTE_LOCAL: " |
+TComma | , |
+TVazio |   |
+TIdentificador | CONSTANTE_LOCAL |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+         |
+TComentarioBloco | { CONSTANTE_LOCAL = 10; } |
+TVazio |   |
+TComentarioBloco | { Isso geraria um erro, pois unalterable só pode ser inicializado uma vez } |
+TVazio |  
+     |
+TRbracket | ] |
+TVazio |   |
+TComentarioBloco | { Fim do bloco} |
+TVazio | 
+
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "GlobalCounter fora do bloco: " |
+TComma | , |
+TVazio |   |
+TIdentificador | GlobalCounter |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TComentarioBloco | { show ("LocalVar fora do bloco: ", LocalVar, '\n'); } |
+TVazio |   |
+TComentarioBloco | { Isso geraria um erro de escopo } |
+TVazio |  
+
+     |
+TComentarioBloco | { Atribuição de valor a constante declarada sem inicialização } |
+TVazio | 
+     |
+TUnalterable | unalterable |
+TVazio |   |
+TTipoNumber | number |
+TVazio |   |
+TIdentificador | OutraConstante |
+TSemicolon | ; |
+TVazio | 
+     |
+TIdentificador | OutraConstante |
+TVazio |   |
+TEqual | = |
+TVazio |   |
+TNumero | 25 |
+TSemicolon | ; |
+TVazio |   |
+TComentarioBloco | { Inicialização posterior com '=' } |
+TVazio | 
+     |
+TShow | show |
+TVazio |   |
+TLpar | ( |
+TString | "OutraConstante: " |
+TComma | , |
+TVazio |   |
+TIdentificador | OutraConstante |
+TComma | , |
+TVazio |   |
+TSymbol | '\n |
+TSymbol | ' |
+TRpar | ) |
+TSemicolon | ; |
+TVazio | 
+     |
+TComentarioBloco | { OutraConstante = 30; } |
+TVazio |   |
+TComentarioBloco | { Isso geraria um erro, pois já foi inicializada } |
+TVazio | 
+
+ |
+TThat | That |
+TVazio |   |
+TWould | would |
+TVazio |   |
+TBe | be |
+TVazio |   |
+TAll | all |
+TDot | . |

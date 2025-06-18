@@ -5,29 +5,29 @@ It presents:
 
 Let us begin:
     GlobalCounter = 0;
-    show ('GlobalCounter inicial: ', GlobalCounter, '\n');
+    show ("GlobalCounter inicial: ", GlobalCounter, '\n');
 
     [ { Bloco de código, delimitado por [ e ] } 
         alterable number LocalVar = 50; { Variável local } 
-        show ('LocalVar dentro do bloco: ', LocalVar, '\n');
+        show ("LocalVar dentro do bloco: ", LocalVar, '\n');
         GlobalCounter = GlobalCounter + LocalVar; { Acessando variável global dentro do bloco }
-        show ('GlobalCounter após modificacao local: ', GlobalCounter, '\n');
+        show ("GlobalCounter após modificacao local: ", GlobalCounter, '\n');
 
         LocalVar = LocalVar * 2; { Atribuição em variável local }
-        show ('LocalVar após reatribuicao: ', LocalVar, '\n');
+        show ("LocalVar após reatribuicao: ", LocalVar, '\n');
 
         unalterable number CONSTANTE_LOCAL = 5; { Constante local } 
-        show ('CONSTANTE_LOCAL: ', CONSTANTE_LOCAL, '\n');
+        show ("CONSTANTE_LOCAL: ", CONSTANTE_LOCAL, '\n');
         { CONSTANTE_LOCAL = 10; } { Isso geraria um erro, pois unalterable só pode ser inicializado uma vez } 
     ] { Fim do bloco}
 
-    show ('GlobalCounter fora do bloco: ', GlobalCounter, '\n');
-    { show ('LocalVar fora do bloco: ', LocalVar, '\n'); } { Isso geraria um erro de escopo } 
+    show ("GlobalCounter fora do bloco: ", GlobalCounter, '\n');
+    { show ("LocalVar fora do bloco: ", LocalVar, '\n'); } { Isso geraria um erro de escopo } 
 
     { Atribuição de valor a constante declarada sem inicialização }
     unalterable number OutraConstante;
     OutraConstante = 25; { Inicialização posterior com '=' }
-    show ('OutraConstante: ', OutraConstante, '\n');
+    show ("OutraConstante: ", OutraConstante, '\n');
     { OutraConstante = 30; } { Isso geraria um erro, pois já foi inicializada }
 
 That would be all.

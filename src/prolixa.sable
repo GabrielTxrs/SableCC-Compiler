@@ -6,8 +6,6 @@ Helpers
   letra = maiuscula | minuscula;
   digito = ['0' .. '9'];
   espaco = ' ';
-  capture = 'capture';
-  show = 'show';
 
   tab = 9;
   cr = 13;
@@ -18,38 +16,14 @@ Helpers
   not_l_bracket = [all - '{'];
   not_r_bracket = [all - '}'];
   quotes = ''';
-
-  /* estruturas de controle */
-  kw_just         = 'just';
-  kw_in           = 'in';
-  kw_case         = 'case';
-  kw_that_lower   = 'that';
-  kw_otherwise    = 'otherwise';
-  kw_as           = 'as';
-  kw_long         = 'long';
-  kw_go           = 'go';
-  kw_next         = 'next';
-  kw_iteration    = 'iteration';
-  kw_abandon      = 'abandon';  
-  kw_considering  = 'considering';
-  kw_do           = 'do';
-  kw_from         = 'from';
-  kw_to           = 'to';
-  kw_by           = 'by';
- 
-  /* tipos primitivos */
-  tipo_symbol = 'symbol';
-  tipo_number = 'number';
-  tipo_answer = 'answer';
-
+  double_quotes = '"';
+  backslash = '\';
+  not_quotes_backslash = [not_cr_lf - [quotes + backslash]];
+   
   /* valores booleanos */
   bool_yes = 'yes';
   bool_no  = 'no';
 
-  /* operadores logicos */
-  kw_and = 'and';
-  kw_or  = 'or';
-  kw_xor = 'xor';
  
 Tokens
   /* frases de cabeçalho */
@@ -92,19 +66,58 @@ Tokens
   semicolon = ';';
   dot       = '.';
   times     = 'x';
+  not = '!';
   
-  symbol = quotes [not_cr_lf - quotes]+ quotes;
+  /* if */
+  just = 'just';
+  in = 'in';
+  case = 'case';
+  that_lower = 'that';
+
+  otherwise = 'otherwise';
+  do = 'do';
+
+  /* while */
+  as = 'as';
+  long = 'long';
+
+  /* continue */
+  go = 'go';
+  next = 'next';
+  iteration = 'iteration';
+
+  /* tipos primitivos */
+  tipo_symbol = 'symbol';
+  tipo_number = 'number';
+  tipo_answer = 'answer';
+
+  considering  = 'considering';
+
+  from = 'from';
+  by = 'by';
+  to = 'to';
+
+  abandon = 'abandon';
+
+  /* operadores logicos */
+  and = 'and';
+  or  = 'or';
+  xor = 'xor';
+
+  answer = bool_yes | bool_no;
+  symbol = quotes (backslash letra)? | letra quotes;
+
+  string = double_quotes [not_cr_lf - double_quotes]+ double_quotes;
   numero = digito+ ('.' | digito+)?;
   identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
-  tipo_primitivo = tipo_symbol | tipo_number | tipo_answer;
-  funcoes_primitivas = capture | show;
+  capture = 'capture';
+  show = 'show';
 
   /* modificadores e declaracao de vetor */
-  kw_alterable   = 'alterable';
-  kw_unalterable = 'unalterable';
-  kw_vector      = 'vector';
-  kw_of          = 'of';
-
+  alterable = 'alterable';
+  unalterable = 'unalterable';
+  vector = 'vector';
+  of = 'of';
   
   vazio = (espaco | cr | lf | tab)+;
   comentario_bloco = '{'not_r_bracket*'}';

@@ -20,7 +20,7 @@ public class Main {
                 Lexer lexer = new Lexer(new PushbackReader(new FileReader(file), 1024));
                 Token token;
                 while (!((token = lexer.next()) instanceof EOF)) {
-                    System.out.print(token.getClass()+" | "+token.toString()+"|\n");
+                    System.out.print(token.getClass().getSimpleName()+" | "+token.toString()+"|\n");
                 }
             } catch (Exception e) {
                 System.out.println("Error in file " + file.getName() + ": " + e.getMessage());
