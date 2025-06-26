@@ -1,22 +1,24 @@
-This is program TesteEscopo
+This is program TesteEscopo.
 It presents:
+    unalterable number GlobalValue = 100;
+    unalterable number CONSTANTE_LOCAL = 5;
+    unalterable number OutraConstante;
     alterable number GlobalCounter; { Variável global } 
-    alterable number GlobalValue = 100;
+    alterable number LocalVar;
 
 Let us begin:
-    GlobalCounter = 0;
+    GlobalCounter := 0;
     show ("GlobalCounter inicial: ", GlobalCounter, '\n');
 
     [ { Bloco de código, delimitado por [ e ] } 
-        alterable number LocalVar = 50; { Variável local } 
+        LocalVar := 50; { Variável local } 
         show ("LocalVar dentro do bloco: ", LocalVar, '\n');
-        GlobalCounter = GlobalCounter + LocalVar; { Acessando variável global dentro do bloco }
+        GlobalCounter := GlobalCounter + LocalVar; { Acessando variável global dentro do bloco }
         show ("GlobalCounter após modificacao local: ", GlobalCounter, '\n');
 
-        LocalVar = LocalVar * 2; { Atribuição em variável local }
+        LocalVar := LocalVar * 2; { Atribuição em variável local }
         show ("LocalVar após reatribuicao: ", LocalVar, '\n');
 
-        unalterable number CONSTANTE_LOCAL = 5; { Constante local } 
         show ("CONSTANTE_LOCAL: ", CONSTANTE_LOCAL, '\n');
         { CONSTANTE_LOCAL = 10; } { Isso geraria um erro, pois unalterable só pode ser inicializado uma vez } 
     ] { Fim do bloco}
@@ -24,9 +26,7 @@ Let us begin:
     show ("GlobalCounter fora do bloco: ", GlobalCounter, '\n');
     { show ("LocalVar fora do bloco: ", LocalVar, '\n'); } { Isso geraria um erro de escopo } 
 
-    { Atribuição de valor a constante declarada sem inicialização }
-    unalterable number OutraConstante;
-    OutraConstante = 25; { Inicialização posterior com '=' }
+    OutraConstante = 25 { Atribuição de valor a constante declarada sem inicialização }
     show ("OutraConstante: ", OutraConstante, '\n');
     { OutraConstante = 30; } { Isso geraria um erro, pois já foi inicializada }
 

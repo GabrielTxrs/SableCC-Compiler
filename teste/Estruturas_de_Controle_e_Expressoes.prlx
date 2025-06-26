@@ -1,21 +1,24 @@
-This is program ControleDeFluxo
+This is program ControleDeFluxo.
 It presents:
     alterable number Contador;
-    alterable number Limite = 5;
-    alterable answer CondicaoVerdadeira = yes;
+    alterable number Limite;
+    alterable answer CondicaoVerdadeira;
+    alterable answer CondicaoFalsa;
     alterable number Resultante;
-    alterable number X = 10;
-    alterable number Y = 3;
+    alterable number X;
+    alterable number Y;
+    alterable number Temporario;
 
 Let us begin:
-    Contador = 0;
+    Contador := 0;
 
     { just in case that }
+    Limite := 5;
     just in case that (Limite > 0) do
         show ("Limite é positivo.", '\n');
         {
             show ("Um sub-bloco dentro de just in case.", '\n');
-            alterable number Temporario = 20;
+            Temporario := 20;
             show ("Temporario: ", Temporario, '\n');
         }
     otherwise do
@@ -25,7 +28,7 @@ Let us begin:
     { as long as }
     as long as (Contador < Limite) do
         show ("Contador: ", Contador, '\n');
-        Contador = Contador + 1;
+        Contador := Contador + 1;
         just in case that (Contador == 3) do
             go to next iteration;
         ;
@@ -43,28 +46,38 @@ Let us begin:
     ;
     show ("Saiu do loop considering.", '\n');
 
+    X := 10;
+    Y := 3;
     { Expressões aritméticas, relacionais e booleanas }
-    Resultante = X + Y; { Soma }
-    show ("X + Y = ", Resultante, '\n');
-    Resultante = X - Y; { Subtração }
-    show ("X - Y = ", Resultante, '\n');
-    Resultante = X * Y; { Multiplicação }
-    show ("X * Y = ", Resultante, '\n');
-    Resultante = X / Y; { Divisão real }
-    show ("X / Y = ", Resultante, '\n');
-    Resultante = X // Y; { Divisão inteira }
-    show ("X // Y = ", Resultante, '\n');
+    Resultante := X + Y; { Soma }
+    show ("X + Y := ", Resultante, '\n');
+    Resultante := X - Y; { Subtração }
+    show ("X - Y := ", Resultante, '\n');
+    Resultante := X * Y; { Multiplicação }
+    show ("X * Y := ", Resultante, '\n');
+    Resultante := X / Y; { Divisão real }
+    show ("X / Y := ", Resultante, '\n');
+    Resultante := X // Y; { Divisão inteira }
+    show ("X // Y := ", Resultante, '\n');
+    show(-1);
+    show(-X);
 
-    just in case that (X == Y) do show ("X é igual a Y", '\n'); ; { Igualdade } 
-    just in case that (X != Y) do show ("X é diferente de Y", '\n'); ; { Diferente } 
-    just in case that (X <= Y) do show ("X é menor ou igual a Y", '\n'); ; { Menor ou igual } 
-    just in case that (X >= Y) do show ("X é maior ou igual a Y", '\n'); ; { Maior ou igual } 
-    just in case that (X < Y) do show ("X é menor que Y", '\n'); ; { Menor que } 
-    just in case that (X > Y) do show ("X é maior que Y", '\n'); ; { Maior que } 
+    just in case that (X == Y) do show ("X é igual a Y", '\n'); { Igualdade } 
+    just in case that (X != Y) do show ("X é diferente de Y", '\n'); { Diferente }
+    just in case that (X <= Y) do show ("X é menor ou igual a Y", '\n'); { Menor ou igual }
+    just in case that (X >= Y) do show ("X é maior ou igual a Y", '\n'); { Maior ou igual }
+    just in case that (X < Y) do show ("X é menor que Y", '\n'); { Menor que } 
+    just in case that (X > Y) do show ("X é maior que Y", '\n'); { Maior que } 
 
-    just in case that (!CondicaoVerdadeira) do show ("CondicaoVerdadeira é no", '\n'); ; { Negação booleana} 
-    just in case that (CondicaoVerdadeira and (X > Y)) do show ("AND lógico", '\n'); ; 
-    just in case that (CondicaoVerdadeira or (X < Y)) do show ("OR lógico", '\n'); ; 
-    just in case that (CondicaoVerdadeira xor (X > Y)) do show ("XOR lógico", '\n'); ; 
+    CondicaoFalsa := no;
+    just in case that (CondicaoFalsa) do show ("CondicaoFalsa é ", CondicaoFalsa, '\n');
+    just in case that (!CondicaoFalsa) do show ("CondicaoFalsa é ", !CondicaoFalsa, '\n');
+    
+    CondicaoVerdadeira := yes;
+    just in case that (CondicaoVerdadeira) do show ("CondicaoVerdadeira é ", CondicaoVerdadeira, '\n');
+    just in case that (!CondicaoVerdadeira) do show ("CondicaoVerdadeira é ", !CondicaoVerdadeira, '\n'); { Negação booleana} 
+    just in case that (CondicaoVerdadeira and (X > Y)) do show ("AND lógico", '\n');
+    just in case that (CondicaoVerdadeira or (X < Y)) do show ("OR lógico", '\n');
+    just in case that (CondicaoVerdadeira xor (X > Y)) do show ("XOR lógico", '\n');
 
 That would be all.
