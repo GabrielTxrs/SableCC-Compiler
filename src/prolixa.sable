@@ -113,7 +113,7 @@ Tokens
 
   string = double_quotes ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ double_quotes;
   
-  numero = digito+ ('.' | digito+)?;
+  numero = digito+ ('.' digito+)?;
   identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
   capture = 'capture';
   show = 'show';
