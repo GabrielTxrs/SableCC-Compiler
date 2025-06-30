@@ -16,6 +16,7 @@ Helpers
   not_r_bracket = [all - '}'];
   espaco = ' ';
   quotes = ''';
+  double_quotes = '"';
   backslash = '\';
   
   controle = 'a' | 'b' | 't' | 'n' | 'v' | 'f' | '0';
@@ -110,7 +111,7 @@ Tokens
   answer = bool_yes | bool_no;
   symbol = quotes (backslash controle | simbolos | letra | digito | espaco) quotes;
 
-  string = '"' ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ '"';
+  string = double_quotes ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ double_quotes;
   
   numero = digito+ ('.' | digito+)?;
   identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
