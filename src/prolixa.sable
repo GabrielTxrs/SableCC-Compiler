@@ -14,37 +14,36 @@ Helpers
   not_cr_lf = [all - [cr + lf]];
   not_l_bracket = [all - '{'];
   not_r_bracket = [all - '}'];
+
   espaco = ' ';
   quotes = ''';
+  double_quotes = '"';
   backslash = '\';
   
   controle = 'a' | 'b' | 't' | 'n' | 'v' | 'f' | '0';
   simbolos = [33 .. 47] | [58 .. 64] | [91 .. 96] | [123 .. 126];
    
-  /* valores booleanos */
   bool_yes = 'yes';
   bool_no  = 'no';
 
  
 Tokens
-  /* frases de cabeçalho */
+  /* Frases de Cabecalho */
   this = 'This';
   is = 'is';
   program = 'program';
- 
   it = 'It';
   presents = 'presents';
-  
   let = 'Let';
   us = 'us';
   begin = 'begin';
- 
   that = 'That';
   would = 'would';
   be = 'be';
   all = 'all';
 
-  /* Operadores e símbolos */
+
+  /* Operadores e Simbolos */
   plus      = '+';
   minus     = '-';
   mult      = '*';
@@ -62,7 +61,8 @@ Tokens
   dot       = '.';
   times     = 'x';
   
-  /* operadores logicos*/
+
+  /* Operadores Logicos*/
   eq        = '==';
   neq       = '!=';
   le        = '<=';
@@ -70,62 +70,67 @@ Tokens
   lt        = '<';
   gt        = '>';
   not = '!';
-  
-  /* if */
+
+
+  /* Condicional */
   just = 'just';
   in = 'in';
   case = 'case';
   that_lower = 'that';
-
   otherwise = 'otherwise';
   do = 'do';
 
-  /* while */
+
+  /* Looping e Estruturas de Controle*/
   as = 'as';
   long = 'long';
-
-  /* continue */
   go = 'go';
   next = 'next';
   iteration = 'iteration';
-
-  /* tipos primitivos */
-  tipo_symbol = 'symbol';
-  tipo_number = 'number';
-  tipo_answer = 'answer';
-
   considering  = 'considering';
-
   from = 'from';
   by = 'by';
   to = 'to';
-
   abandon = 'abandon';
 
-  /* operadores logicos */
+
+  /* Tipos Primitivos */
+  tipo_symbol = 'symbol';
+  tipo_number = 'number';
+  tipo_answer = 'answer';
+  symbol = quotes (backslash controle | simbolos | letra | digito | espaco) quotes;
+  string = double_quotes ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ double_quotes;
+  numero = digito+ ('.' digito+)?;
+  answer = bool_yes | bool_no;
+
+
+  /* Operadores Logicos */
   and = 'and';
   or  = 'or';
   xor = 'xor';
 
-  answer = bool_yes | bool_no;
-  symbol = quotes (backslash controle | simbolos | letra | digito | espaco) quotes;
 
-  string = '"' ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ '"';
-  
-  numero = digito+ ('.' | digito+)?;
-  identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
+  /* Funcoes IO */
   capture = 'capture';
   show = 'show';
 
-  /* modificadores e declaracao de vetor */
+
+  /* Modificadores e Declaracao de Identificador e Vetor */
   alterable = 'alterable';
   unalterable = 'unalterable';
+  identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
   vector = 'vector';
   of = 'of';
+
   
-  comentario_bloco = '{'not_r_bracket*'}';
+  /* Comentario */
+  comentario = '{'not_r_bracket*'}';
+
+
+  /* Vazio */
   vazio = (espaco | cr | lf | tab)+;
+
 
 Ignored Tokens
   vazio,
-  comentario_bloco;
+  comentario;
