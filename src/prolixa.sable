@@ -4,6 +4,8 @@ Helpers
   maiuscula = ['A' .. 'Z'];
   minuscula = ['a' .. 'z'];
   letra = maiuscula | minuscula;
+  zero = '0';
+  nao_zero = ['1' .. '9'];
   digito = ['0' .. '9'];
 
   tab = 9;
@@ -14,36 +16,38 @@ Helpers
   not_cr_lf = [all - [cr + lf]];
   not_l_bracket = [all - '{'];
   not_r_bracket = [all - '}'];
-
   espaco = ' ';
   quotes = ''';
   double_quotes = '"';
   backslash = '\';
-  
+
   controle = 'a' | 'b' | 't' | 'n' | 'v' | 'f' | '0';
   simbolos = [33 .. 47] | [58 .. 64] | [91 .. 96] | [123 .. 126];
-   
+
+  /* valores booleanos */
   bool_yes = 'yes';
   bool_no  = 'no';
 
- 
+
 Tokens
-  /* Frases de Cabecalho */
+  /* frases de cabeçalho */
   this = 'This';
   is = 'is';
   program = 'program';
+
   it = 'It';
   presents = 'presents';
+
   let = 'Let';
   us = 'us';
   begin = 'begin';
+
   that = 'That';
   would = 'would';
   be = 'be';
   all = 'all';
 
-
-  /* Operadores e Simbolos */
+  /* Operadores e símbolos */
   plus      = '+';
   minus     = '-';
   mult      = '*';
@@ -60,9 +64,8 @@ Tokens
   semicolon = ';';
   dot       = '.';
   times     = 'x';
-  
 
-  /* Operadores Logicos*/
+  /* operadores logicos*/
   eq        = '==';
   neq       = '!=';
   le        = '<=';
@@ -71,66 +74,211 @@ Tokens
   gt        = '>';
   not = '!';
 
-
-  /* Condicional */
+  /* if */
   just = 'just';
   in = 'in';
   case = 'case';
   that_lower = 'that';
+
   otherwise = 'otherwise';
   do = 'do';
 
-
-  /* Looping e Estruturas de Controle*/
+  /* while */
   as = 'as';
   long = 'long';
+
+  /* continue */
   go = 'go';
   next = 'next';
   iteration = 'iteration';
-  considering  = 'considering';
-  from = 'from';
-  by = 'by';
-  to = 'to';
-  abandon = 'abandon';
 
-
-  /* Tipos Primitivos */
+  /* tipos primitivos */
   tipo_symbol = 'symbol';
   tipo_number = 'number';
   tipo_answer = 'answer';
-  symbol = quotes (backslash controle | simbolos | letra | digito | espaco) quotes;
-  string = double_quotes ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ double_quotes;
-  numero = digito+ ('.' digito+)?;
-  answer = bool_yes | bool_no;
 
+  considering  = 'considering';
 
-  /* Operadores Logicos */
+  from = 'from';
+  by = 'by';
+  to = 'to';
+
+  abandon = 'abandon';
+
+  /* operadores logicos */
   and = 'and';
   or  = 'or';
   xor = 'xor';
 
-
-  /* Funcoes IO */
+  /* valores */
+  answer = bool_yes | bool_no;
+  symbol = quotes (backslash controle | simbolos | letra | digito | espaco) quotes;
+  string = double_quotes ([[0 .. 0xffff] - ['"' + '\']] | '\'[0 .. 0xffff])+ double_quotes;
+  number = (zero | nao_zero digito*) | (zero | nao_zero digito*) '.' digito+;
+  
+  identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
   capture = 'capture';
   show = 'show';
 
-
-  /* Modificadores e Declaracao de Identificador e Vetor */
+  /* modificadores e declaracao de vetor */
   alterable = 'alterable';
   unalterable = 'unalterable';
-  identificador = maiuscula ( digito | maiuscula | minuscula |  '_' )*;
   vector = 'vector';
   of = 'of';
 
-  
-  /* Comentario */
-  comentario = '{'not_r_bracket*'}';
-
-
-  /* Vazio */
+  comentario_bloco = '{'not_r_bracket*'}';
   vazio = (espaco | cr | lf | tab)+;
-
 
 Ignored Tokens
   vazio,
-  comentario;
+  comentario_bloco;
+
+
+Productions
+
+// ============ PROGRAMA PRINCIPAL ============
+ start = programa;
+
+ programa =
+  this is program identificador dot blocodeclaracoes blocodecomandos;
+
+
+// ============ DECLARAÇÕES ============
+ blocodeclaracoes =
+  {com} it presents colon declaracoes
+  |{sem} ;
+
+ declaracoes =
+  {unica} declaracao
+  |{multiplas} declaracoes declaracao;
+
+ declaracao =
+  {alterable} alterable tipo identificador semicolon
+  |{unalterable} unalterable tipo identificador init_valor semicolon
+  |{vector} vector of tipo lpar dimensao rpar identificador semicolon;
+
+ tipo =
+  {number} tipo_number
+  |{answer} tipo_answer
+  |{symbol} tipo_symbol ;
+
+ init_valor =
+  {com} equal valor
+  |{sem} ;
+
+ dimensao =
+  {unica} exp
+  |{multiplas} dimensao times exp;
+
+
+// ============ EXPRESSÕES, VARIÁVEIS E VALORES ============
+ exp = 
+  {xor} exp_xor;
+
+ exp_xor = 
+  {single} exp_or
+  |{xor} exp_xor xor exp_or;
+
+ exp_or = 
+  {single} exp_and
+  |{or} exp_or or exp_and;
+
+ exp_and =
+  {single}  exp_cmp
+  |{and} exp_and and exp_cmp;
+
+ exp_cmp = 
+  {single} exp_add
+  |{eq} exp_cmp eq exp_add
+  |{neq} exp_cmp neq exp_add
+  |{lt} exp_cmp lt exp_add
+  |{gt} exp_cmp gt exp_add
+  |{le} exp_cmp le exp_add
+  |{ge} exp_cmp ge exp_add;
+
+ exp_add = 
+  {single} exp_prod
+  |{plus} exp_add plus exp_prod
+  |{minus} exp_add minus exp_prod;
+
+ exp_prod = 
+  {single} exp_unary
+  |{mult} exp_prod mult exp_unary
+  |{div} exp_prod div exp_unary
+  |{mod} exp_prod mod exp_unary;
+
+ exp_unary = 
+  {base} exp_base
+  |{neg} minus exp_unary
+  |{not} not exp_unary;
+
+exp_base = 
+  {par} lpar exp rpar
+  |{valor} valor
+  |{var} var;
+
+
+ var =
+  {simples} identificador 
+  |{indice} identificador lpar list_exp rpar;
+
+ unalt =
+  identificador;
+
+ list_exp =
+  {unica} exp
+  |{multiplas} list_exp comma exp;
+
+ list_var =
+ {unica} var
+ |{multiplas} list_var comma var;
+
+ valor =
+  {num} number
+  |{ans} answer
+  |{sym} symbol
+  |{str} string;
+
+
+// ============ COMANDOS ============
+ blocodecomandos =
+  {com} let us begin colon comandos that would be all dot
+  |{sem} ;
+
+ comandos =
+  {unico} comando
+  |{multiplos} comandos comando;
+
+ comando =
+  {m} comando_matched
+  |{u} comando_unmatched;
+
+ comando_matched = 
+  {atribuicao} var assign exp semicolon
+  |{igual} unalt equal exp semicolon
+  |{capture} capture lpar list_var rpar semicolon
+  |{show} show lpar list_exp rpar semicolon
+  |{while} [left]:as long [right]:as lpar exp rpar do comando_matched
+  |{for} considering var from [expf]:exp to [expt]:exp by [expb]:exp do comando_matched
+  |{break} abandon semicolon
+  |{continue} go to next iteration semicolon
+  |{bloco} bloco
+  |{ifelse} just in case that_lower lpar exp rpar [doleft]:do [left]:comando_matched otherwise [doright]:do [right]:comando_matched;
+
+ comando_unmatched =
+  {if} just in case that_lower lpar exp rpar do comando
+  |{ifpartial} just in case that_lower lpar exp rpar [doleft]:do comando_matched otherwise [doright]:do comando_unmatched;
+
+
+// ============ BLOCO ============
+ bloco = 
+  {corpo} lbracket declaracoes_bloco comandos_bloco rbracket;
+
+ declaracoes_bloco =
+ {com} declaracoes
+ |{sem} ;
+
+ comandos_bloco = 
+ {com} comandos
+ |{sem} ;
+  
