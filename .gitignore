@@ -6,3 +6,5 @@
 /src/prolixa/lexer/
 /src/prolixa/node/
 /src/prolixa/parser/
+.classpath
+.project
