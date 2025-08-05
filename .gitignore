@@ -1,7 +1,8 @@
 *.class
 *.dat
-/analysis/
-/node/
-/lexer/
-/parser/
 /bin/
+/.metadata/
+/src/prolixa/analysis/
+/src/prolixa/lexer/
+/src/prolixa/node/
+/src/prolixa/parser/
