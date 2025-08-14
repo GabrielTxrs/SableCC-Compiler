@@ -3,7 +3,7 @@ Package prolixa;
 Helpers 
   maiuscula = ['A' .. 'Z'];
   minuscula = ['a' .. 'z'];
-  letra = maiuscula | minuscula;
+  letra = maiuscula | minuscula | 'ç';
   zero = '0';
   nao_zero = ['1' .. '9'];
   digito = ['0' .. '9'];
@@ -21,7 +21,7 @@ Helpers
   double_quotes = '"';
   backslash = '\';
 
-  controle = 'a' | 'b' | 't' | 'n' | 'v' | 'f' | '0';
+  controle = 'a' | 'b' | 't' | 'n' | 'v' | 'f' | '0' | '\' | quotes;
   simbolos = [33 .. 47] | [58 .. 64] | [91 .. 96] | [123 .. 126];
 
   /* valores booleanos */
