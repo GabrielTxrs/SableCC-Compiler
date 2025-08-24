@@ -1,0 +1,46 @@
+This is program Main.
+
+It presents:
+alterable number X;
+alterable number Y;
+alterable number Z;
+alterable answer Q;
+alterable number I;
+vector of number(3) V;
+
+Let us begin:
+V(1) := 2;
+V(2) := 3;
+V(3) := 4;
+
+X := (1 + 2) * 3 - 4 / 2;
+Y := 7 // 3;
+Z := -(X) + V(2);
+Q := yes xor no and !(1 == 2);
+
+show(
+  1 + 2,
+  5 - 3,
+  2 * 3,
+  7 / 2,
+  7 // 3,
+  -1,
+  !(no),
+  1 == 1,
+  1 != 2,
+  2 < 3,
+  3 > 2,
+  2 <= 2,
+  3 >= 4,
+  yes and no,
+  yes or no,
+  yes xor no,
+  (1 + 2) * (3 + 4),
+  (X + Y) * Z,
+  V(1) + V(2) + V(3),
+  !(1 == 2) and ((1 + 2) * 3 > 5) or (V(1) <= V(3)) xor (-(2) == -2),
+  'K',
+  "Hello"
+);
+
+That would be all.

@@ -1,0 +1,43 @@
+This is program Main.
+
+It presents:
+alterable number A;
+unalterable number CONST;
+alterable number I;
+vector of number(3) V;
+
+Let us begin:
+A := 1 + 2 * 3;
+CONST = 9;
+capture(A, I, V(1));
+show(A, 42, 'Z', "Hello", yes, V(2));
+
+as long as (A < 10) do
+    go to next iteration;
+
+considering I from 1 to 3 by 1 do
+    show(I);
+
+abandon;
+go to next iteration;
+
+[
+    alterable number X;
+    X := 5;
+    show(X);
+]
+
+just in case that (1) do
+    show(A);
+otherwise do
+    abandon;
+
+just in case that (0) do show(A);
+
+just in case that (1) do 
+  show(1); 
+otherwise do 
+  just in case that (0) do 
+    show(2);
+
+That would be all.

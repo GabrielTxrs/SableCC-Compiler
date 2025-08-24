@@ -1,0 +1,21 @@
+This is program Main.
+
+It presents:
+alterable number A;
+unalterable number B;
+unalterable number C = 100;
+vector of number(10) V;
+
+alterable answer D;
+unalterable answer E;
+unalterable answer F = yes;
+vector of answer(2x3) M;
+
+alterable symbol G;
+unalterable symbol H;
+unalterable symbol I = 'X';
+vector of symbol(4x5x6) T;
+
+Let us begin:
+abandon;
+That would be all.
