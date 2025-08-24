@@ -1,0 +1,13 @@
+This is program Main.
+
+It presents:
+alterable number I;
+
+Let us begin:
+considering I from 1 to 3 by 1 do
+    [
+        alterable number J;
+        J = I;
+        show(J);
+    ]
+That would be all.

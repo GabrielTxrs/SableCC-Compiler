@@ -1,0 +1,70 @@
+This is program Main. {R1 programa}
+
+It presents: {R2 blocodeclaracoes {com}}
+alterable number Sum;          {R4 declaracao {alterable} + R9 tipo {number}}
+alterable number Count;        {R4 + R9}
+alterable number Max;          {R4 + R9}
+alterable number I;            {R4 + R9}
+alterable answer Flag;         {R4 + R9 tipo {answer}}
+unalterable number Days;       {R5 declaracao {unalterablenoinit} + R9}
+unalterable symbol Sep;        {R5 + R9 tipo {symbol}}
+vector of number(7) Sales;     {R7 declaracao {vector} + R10 dimensao {unica}}
+vector of number(2x3) Grid;    {R7 + R10 dimensao {multiplas}}
+
+Let us begin: {R11 blocodecomandos {com}}
+
+{-- inicializações básicas ------------------------------------------------}
+Sum := 0;                      {R13 comando_matched {atribuicao} + exp_base {valor}}
+Count := 0;                    {R13}
+Max := -1;                     {R13 + R18 exp_unary {neg}}
+Sep = '-';                     {R14 comando_matched {igual} sobre unalt}
+Days = 7;                      {R14}
+
+{-- capturar/mostrar alguns valores --------------------------------------}
+capture(Sum, I, Sales(1));     {R15 capture + list_var {multiplas} + var {indice}}
+show("Start", Sep, Sum, I);    {R16 show + list_exp {multiplas} + valor {str,sym,num}}
+
+{-- preencher vetor Sales com valores simulados ---------------------------}
+considering I from 1 to Days by 1 do  {R18 for + var {simple}}
+  [
+    alterable number Tmp;             {R24 bloco + declaracoes_bloco + R4}
+    Tmp := I * 2 + 3;                 {R13 + exp_add {plus} + exp_prod {mult}}
+    Sales(I) := Tmp;                  {R13 + var {indice}}
+    just in case that (Tmp > Max) do  {R22 ifsimple + exp_cmp {gt}}
+      Max := Tmp;
+  ]
+
+{-- cálculo de soma e contagem, pulando zeros (continue) ------------------}
+I := 1;                         {R13}
+as long as (I <= Days) do       {R17 while + exp_cmp {le}}
+  [
+    just in case that (Sales(I) == 0) do  {R22 + exp_cmp {eq}}
+      go to next iteration;               {R20 continue}
+    Sum := Sum + Sales(I);                {R13 + exp_add {plus}}
+    Count := Count + 1;                   {R13}
+    I := I + 1;                           {R13}
+  ]
+
+{-- alerta composto com lógicos: xor, and, not, or ------------------------}
+Flag := (Sum > 10) and !(Count == 0) xor yes or no;  {R13 + exp_and/or/xor + exp_unary {not}}
+
+{-- if/else encadeado com bloco e atribuições -----------------------------}
+just in case that (Flag) do                 {R23 if/else}
+  [
+    show("OK", Sum, Count, Max);            {R16}
+  ]
+otherwise do
+  [
+    show("ALERT", Sum, Count, Max);         {R16}
+    abandon;                                {R19 break}
+  ]
+
+{-- exemplo de if parcial (associação à direita é unmatched) --------------}
+just in case that (I != 0) do show("Tail");         {R21 if (unmatched) + exp_cmp {neq}}
+just in case that (0) do show("A") otherwise do just in case that (1) do show("B"); {R23 ifpartial}
+
+{-- operações extras; índice múltiplo e mod (//) --------------------------}
+Grid(1, 2) := (7 // 3) + (3 * 2) - (8 / 4);  {R13 + var {indice} com list_exp {multiplas}}
+show(Grid(1,2), 'Z', yes and no, 2 <= 3, 3 >= 2, 3 < 4, 5 > 1, 1 == 1); {R16 + vários comparadores}
+
+That would be all. {R11 fechamento}

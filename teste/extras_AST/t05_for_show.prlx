@@ -1,0 +1,10 @@
+This is program Main.
+
+It presents:
+alterable number I;
+
+Let us begin:
+considering I from 1 to 5 by 1 do
+    show( I );
+
+That would be all.

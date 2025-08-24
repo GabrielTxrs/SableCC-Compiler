@@ -1,0 +1,12 @@
+This is program Main.
+
+It presents:
+alterable number X;
+
+Let us begin:
+{
+    alterable number Y;
+    Y = 5;
+    show(Y);
+}
+That would be all.

@@ -1,0 +1,11 @@
+This is program Main.
+
+It presents:
+vector of number(5) Valores;
+
+Let us begin:
+just in case that (1) do
+    abandon;
+otherwise do
+    Valores = 2;
+That would be all.

@@ -137,148 +137,274 @@ Ignored Tokens
 Productions
 
 // ============ PROGRAMA PRINCIPAL ============
- start = programa;
+start {-> a_prog} = 
+  programa                                       {-> programa.a_prog}
+;
 
- programa =
-  this is program identificador dot blocodeclaracoes blocodecomandos;
+programa {-> a_prog} =
+  this is program identificador dot blocodeclaracoes blocodecomandos {-> New a_prog.prog(identificador, blocodeclaracoes.list_a_decl, blocodecomandos.list_a_cmd)}
+;
 
 
 // ============ DECLARAÇÕES ============
- blocodeclaracoes =
-  {com} it presents colon declaracoes
-  |{sem} ;
+blocodeclaracoes {-> list_a_decl} =
+  {com} it presents colon declaracoes            {-> declaracoes.list_a_decl}
+| {sem}                                          {-> New list_a_decl.nil()} 
+;  
 
- declaracoes =
-  {unica} declaracao
-  |{multiplas} declaracoes declaracao;
+declaracoes {-> list_a_decl} =
+  {unica} declaracao                             {-> New list_a_decl.snoc(New list_a_decl.nil(), declaracao.a_decl)}
+| {multiplas} declaracoes declaracao             {-> New list_a_decl.snoc(declaracoes.list_a_decl, declaracao.a_decl)}
+;
 
- declaracao =
-  {alterable} alterable tipo identificador semicolon
-  |{unalterable} unalterable tipo identificador init_valor semicolon
-  |{vector} vector of tipo lpar dimensao rpar identificador semicolon;
+declaracao {-> a_decl} =
+  {alterable} alterable tipo identificador semicolon                           {-> New a_decl.alt(tipo.a_type, identificador)}
+| {unalterablenoinit} unalterable tipo identificador semicolon                 {-> New a_decl.unaltnoinit(tipo.a_type, identificador)}
+| {unalterableinit} unalterable tipo identificador equal valor semicolon       {-> New a_decl.unaltinit(tipo.a_type, identificador, valor.a_val)}
+| {vector} vector of tipo lpar dimensao rpar identificador semicolon           {-> New a_decl.vector(tipo.a_type, dimensao.list_a_exp, identificador)}
+;
 
- tipo =
-  {number} tipo_number
-  |{answer} tipo_answer
-  |{symbol} tipo_symbol ;
+tipo {-> a_type} =
+  {number} tipo_number                           {-> New a_type.number()}
+| {answer} tipo_answer                           {-> New a_type.answer()}
+| {symbol} tipo_symbol                           {-> New a_type.symbol()}
+;
 
- init_valor =
-  {com} equal valor
-  |{sem} ;
-
- dimensao =
-  {unica} exp
-  |{multiplas} dimensao times exp;
+dimensao {-> list_a_exp} =
+  {unica} exp                                    {-> New list_a_exp.snoc(New list_a_exp.nil(), exp.a_exp)}
+| {multiplas} dimensao times exp                 {-> New list_a_exp.snoc(dimensao.list_a_exp, exp.a_exp)}
+;
 
 
 // ============ EXPRESSÕES, VARIÁVEIS E VALORES ============
- exp = 
-  {xor} exp_xor;
+exp {-> a_exp} = 
+  {xor} exp_xor                                  {-> exp_xor.a_exp}
+;
 
- exp_xor = 
-  {single} exp_or
-  |{xor} exp_xor xor exp_or;
+exp_xor {-> a_exp} = 
+  {single} exp_or                                {-> exp_or.a_exp}
+| {xor} [esq]:exp_xor xor [dir]:exp_or           {-> New a_exp.xor(esq.a_exp, dir.a_exp)}
+;
 
- exp_or = 
-  {single} exp_and
-  |{or} exp_or or exp_and;
+exp_or {-> a_exp} = 
+  {single} exp_and                               {-> exp_and.a_exp}
+| {or} [esq]:exp_or or [dir]:exp_and             {-> New a_exp.or(esq.a_exp, dir.a_exp)}                  
+;
 
- exp_and =
-  {single}  exp_cmp
-  |{and} exp_and and exp_cmp;
+exp_and {-> a_exp} =
+  {single}  exp_cmp                              {-> exp_cmp.a_exp}
+| {and} [esq]:exp_and and [dir]:exp_cmp          {-> New a_exp.and(esq.a_exp, dir.a_exp)}  
+;
 
- exp_cmp = 
-  {single} exp_add
-  |{eq} exp_cmp eq exp_add
-  |{neq} exp_cmp neq exp_add
-  |{lt} exp_cmp lt exp_add
-  |{gt} exp_cmp gt exp_add
-  |{le} exp_cmp le exp_add
-  |{ge} exp_cmp ge exp_add;
+exp_cmp {-> a_exp} = 
+  {single} exp_add                               {-> exp_add.a_exp}
+| {eq} [esq]:exp_cmp eq [dir]:exp_add            {-> New a_exp.eq(esq.a_exp, dir.a_exp)}
+| {neq} [esq]:exp_cmp neq [dir]:exp_add          {-> New a_exp.neq(esq.a_exp, dir.a_exp)}
+| {lt} [esq]:exp_cmp lt [dir]:exp_add            {-> New a_exp.lt(esq.a_exp, dir.a_exp)}
+| {gt} [esq]:exp_cmp gt [dir]:exp_add            {-> New a_exp.gt(esq.a_exp, dir.a_exp)}
+| {le} [esq]:exp_cmp le [dir]:exp_add            {-> New a_exp.le(esq.a_exp, dir.a_exp)}
+| {ge} [esq]:exp_cmp ge [dir]:exp_add            {-> New a_exp.ge(esq.a_exp, dir.a_exp)}
+;
 
- exp_add = 
-  {single} exp_prod
-  |{plus} exp_add plus exp_prod
-  |{minus} exp_add minus exp_prod;
+exp_add {-> a_exp} = 
+  {single} exp_prod                              {-> exp_prod.a_exp}
+| {plus} [esq]:exp_add plus [dir]:exp_prod       {-> New a_exp.add(esq.a_exp, dir.a_exp)}
+| {minus} [esq]:exp_add minus [dir]:exp_prod     {-> New a_exp.sub(esq.a_exp, dir.a_exp)}
+;
 
- exp_prod = 
-  {single} exp_unary
-  |{mult} exp_prod mult exp_unary
-  |{div} exp_prod div exp_unary
-  |{mod} exp_prod mod exp_unary;
+exp_prod {-> a_exp} = 
+  {single} exp_unary                             {-> exp_unary.a_exp}
+| {mult} [esq]:exp_prod mult [dir]:exp_unary     {-> New a_exp.mult(esq.a_exp, dir.a_exp)}
+| {div} [esq]:exp_prod div [dir]:exp_unary       {-> New a_exp.div(esq.a_exp, dir.a_exp)}
+| {mod} [esq]:exp_prod mod [dir]:exp_unary       {-> New a_exp.mod(esq.a_exp, dir.a_exp)}
+;
 
- exp_unary = 
-  {base} exp_base
-  |{neg} minus exp_unary
-  |{not} not exp_unary;
+exp_unary {-> a_exp} = 
+  {base} exp_base                                {-> exp_base.a_exp}
+| {neg} minus exp_unary                          {-> New a_exp.neg(exp_unary.a_exp)}
+| {not} not exp_unary                            {-> New a_exp.not(exp_unary.a_exp)}
+;
 
-exp_base = 
-  {par} lpar exp rpar
-  |{valor} valor
-  |{var} var;
+exp_base {-> a_exp} = 
+  {par} lpar exp rpar                            {-> exp.a_exp}
+| {valor} valor                                  {-> New a_exp.val(valor.a_val)}
+| {var} var                                      {-> New a_exp.var(var.a_var)}
+;
 
 
- var =
-  {simples} identificador 
-  |{indice} identificador lpar list_exp rpar;
+var {-> a_var} =
+  {simple} identificador                         {-> New a_var.simple(identificador)}
+| {indice} identificador lpar list_exp rpar      {-> New a_var.indice(identificador, list_exp.list_a_exp)}
+;
 
- unalt =
-  identificador;
+valor {-> a_val} =
+  {num} number                                   {-> New a_val.num(number)}
+| {ans} answer                                   {-> New a_val.ans(answer)}
+| {sym} symbol                                   {-> New a_val.sym(symbol)}
+| {str} string                                   {-> New a_val.str(string)}
+;
 
- list_exp =
-  {unica} exp
-  |{multiplas} list_exp comma exp;
+unalt {-> identificador} =
+  identificador                                  {-> identificador}
+;
 
- list_var =
- {unica} var
- |{multiplas} list_var comma var;
+list_exp {-> list_a_exp} =
+  {unica} exp                                    {-> New list_a_exp.snoc(New list_a_exp.nil(), exp.a_exp)}
+| {multiplas} list_exp comma exp                 {-> New list_a_exp.snoc(list_exp.list_a_exp, exp.a_exp)}
+;
 
- valor =
-  {num} number
-  |{ans} answer
-  |{sym} symbol
-  |{str} string;
+list_var {-> list_a_var} =
+  {unica} var                                    {-> New list_a_var.snoc(New list_a_var.nil(), var.a_var)}
+| {multiplas} list_var comma var                 {-> New list_a_var.snoc(list_var.list_a_var, var.a_var)}
+;
 
 
 // ============ COMANDOS ============
- blocodecomandos =
-  {com} let us begin colon comandos that would be all dot
-  |{sem} ;
+blocodecomandos {-> list_a_cmd} =
+  {com} let us begin colon comandos that would be all dot  {-> comandos.list_a_cmd}
+| {sem}                                                    {-> New list_a_cmd.nil()}
+;
 
- comandos =
-  {unico} comando
-  |{multiplos} comandos comando;
+comandos {-> list_a_cmd} =
+  {unico} comando                                          {-> New list_a_cmd.snoc(New list_a_cmd.nil(), comando.a_cmd)}
+| {multiplos} comandos comando                             {-> New list_a_cmd.snoc(comandos.list_a_cmd, comando.a_cmd)}
+;
 
- comando =
-  {m} comando_matched
-  |{u} comando_unmatched;
+comando {-> a_cmd} =
+  {m} comando_matched                                      {-> comando_matched.a_cmd}
+| {u} comando_unmatched                                    {-> comando_unmatched.a_cmd}
+;
 
- comando_matched = 
-  {atribuicao} var assign exp semicolon
-  |{igual} unalt equal exp semicolon
-  |{capture} capture lpar list_var rpar semicolon
-  |{show} show lpar list_exp rpar semicolon
-  |{while} [left]:as long [right]:as lpar exp rpar do comando_matched
-  |{for} considering var from [expf]:exp to [expt]:exp by [expb]:exp do comando_matched
-  |{break} abandon semicolon
-  |{continue} go to next iteration semicolon
-  |{bloco} bloco
-  |{ifelse} just in case that_lower lpar exp rpar [doleft]:do [left]:comando_matched otherwise [doright]:do [right]:comando_matched;
+comando_matched {-> a_cmd} = 
+  {atribuicao} var assign exp semicolon                                                            {-> New a_cmd.assignvar(var.a_var, exp.a_exp)}
+| {igual} unalt equal exp semicolon                                                                {-> New a_cmd.assignunalt(unalt.identificador, exp.a_exp)}
+| {capture} capture lpar list_var rpar semicolon                                                   {-> New a_cmd.capture(list_var.list_a_var)}
+| {show} show lpar list_exp rpar semicolon                                                         {-> New a_cmd.show(list_exp.list_a_exp)}
+| {while} [left]:as long [right]:as lpar exp rpar do comando_matched                               {-> New a_cmd.while(exp.a_exp, comando_matched.a_cmd)}
+| {for} considering var from [expf]:exp to [expt]:exp by [expb]:exp do comando_matched             {-> New a_cmd.for(var.a_var, expf.a_exp, expt.a_exp, expb.a_exp, comando_matched.a_cmd)}
+| {break} abandon semicolon                                                                        {-> New a_cmd.break()}
+| {continue} go to next iteration semicolon                                                        {-> New a_cmd.continue()}
+| {bloco} bloco                                                                                    {-> New a_cmd.block(bloco.a_block)}
+| {ifelse} just in case that_lower lpar exp rpar [doleft]:do [left]:comando_matched otherwise [doright]:do [right]:comando_matched {-> New a_cmd.if(exp.a_exp, left.a_cmd, right.a_cmd)}
+;
 
- comando_unmatched =
-  {if} just in case that_lower lpar exp rpar do comando
-  |{ifpartial} just in case that_lower lpar exp rpar [doleft]:do comando_matched otherwise [doright]:do comando_unmatched;
+comando_unmatched {-> a_cmd} =
+  {if} just in case that_lower lpar exp rpar do comando                                                                  {-> New a_cmd.ifsimple(exp.a_exp, comando.a_cmd)}
+| {ifpartial} just in case that_lower lpar exp rpar [doleft]:do comando_matched otherwise [doright]:do comando_unmatched {-> New a_cmd.if(exp.a_exp, comando_matched.a_cmd, comando_unmatched.a_cmd)}
+;
 
 
 // ============ BLOCO ============
- bloco = 
-  {corpo} lbracket declaracoes_bloco comandos_bloco rbracket;
+bloco {-> a_block} = 
+  {corpo} lbracket declaracoes_bloco comandos_bloco rbracket         {-> New a_block.block(declaracoes_bloco.list_a_decl, comandos_bloco.list_a_cmd)}
+;
 
- declaracoes_bloco =
- {com} declaracoes
- |{sem} ;
+declaracoes_bloco {-> list_a_decl} =
+  {com} declaracoes                                                  {-> declaracoes.list_a_decl}
+| {sem}                                                              {-> New list_a_decl.nil()}
+;
 
- comandos_bloco = 
- {com} comandos
- |{sem} ;
-  
+comandos_bloco{-> list_a_cmd} = 
+  {com} comandos                                                     {-> comandos.list_a_cmd}
+| {sem}                                                              {-> New list_a_cmd.nil()}
+;
+
+
+
+Abstract Syntax Tree
+
+a_prog =
+  {prog} [name]:identificador [globals]:list_a_decl [cmds]:list_a_cmd
+;
+
+a_block = 
+  {block} [decls]:list_a_decl [cmds]:list_a_cmd
+;
+
+a_type = 
+  {number}
+| {answer}
+| {symbol}
+;
+
+maybe_a_val = 
+  {none}
+| {some} [value]:a_val
+;
+
+a_decl = 
+  {alt}         [type]:a_type [name]:identificador
+| {unaltnoinit} [type]:a_type [name]:identificador
+| {unaltinit}   [type]:a_type [name]:identificador [init]:a_val
+| {vector}      [type]:a_type [dims]:list_a_exp [name]:identificador
+;
+
+a_cmd = 
+  {assignvar}    [esq]:a_var [dir]:a_exp
+| {assignunalt}  [name]:identificador [dir]:a_exp
+| {capture}      [vars]:list_a_var
+| {show}         [exps]: list_a_exp
+| {while}        [cond]:a_exp [body]:a_cmd
+| {for}          [var]:a_var [from]:a_exp [to]:a_exp [by]:a_exp [body]:a_cmd
+| {break}
+| {continue}
+| {block}        [block]:a_block
+| {if}           [cond]:a_exp [then]:a_cmd [else]:a_cmd
+| {ifsimple}     [cond]:a_exp [then]:a_cmd
+;
+
+
+a_exp = 
+  {xor} [esq]:a_exp [dir]:a_exp
+| {or}  [esq]:a_exp [dir]:a_exp
+| {and} [esq]:a_exp [dir]:a_exp
+| {eq}  [esq]:a_exp [dir]:a_exp
+| {neq} [esq]:a_exp [dir]:a_exp
+| {lt}  [esq]:a_exp [dir]:a_exp
+| {gt}  [esq]:a_exp [dir]:a_exp
+| {le}  [esq]:a_exp [dir]:a_exp
+| {ge}  [esq]:a_exp [dir]:a_exp
+| {add} [esq]:a_exp [dir]:a_exp
+| {sub} [esq]:a_exp [dir]:a_exp
+| {mult} [esq]:a_exp [dir]:a_exp
+| {div} [esq]:a_exp [dir]:a_exp
+| {mod} [esq]:a_exp [dir]:a_exp
+| {neg} [exp]:a_exp
+| {not} [exp]:a_exp
+| {var} [ref]:a_var
+| {val} [lit]:a_val
+;
+
+a_var = 
+  {simple} [name]:identificador
+| {indice} [name]:identificador [args]:list_a_exp
+;
+
+a_val = 
+  {num} [tok]:number
+| {ans} [tok]:answer
+| {sym} [tok]:symbol
+| {str} [tok]:string
+;
+
+list_a_exp = 
+  {nil}
+| {snoc} [init]:list_a_exp [last]:a_exp
+;
+
+list_a_var = 
+  {nil}
+| {snoc} [init]:list_a_var [last]: a_var
+;
+
+list_a_decl = 
+  {nil}
+| {snoc} [init]:list_a_decl [last]:a_decl
+;
+
+list_a_cmd = 
+  {nil}
+| {snoc} [init]:list_a_cmd [last]:a_cmd
+;
+
+

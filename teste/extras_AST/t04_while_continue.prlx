@@ -1,0 +1,11 @@
+This is program Main.
+
+It presents:
+vector of number(5) Valores;
+
+Let us begin:
+as long as (1) do
+    go to next iteration;
+
+Valores(1) := 3;
+That would be all.
